@@ -1,16 +1,49 @@
 # hello-world
 
-A simple personal blog homepage built with plain HTML and CSS.
+Blog and documentation site powered by MkDocs and Material for MkDocs.
 
-## Deploy on GitHub Pages
+## What this gives you
 
-1. Push this repository to GitHub.
-2. Open repository settings.
-3. Go to Pages.
-4. Under Build and deployment, select Deploy from a branch.
-5. Choose the `master` branch and `/ (root)` folder.
-6. Save and wait for GitHub Pages to publish your site.
+- Write articles as Markdown files.
+- Automatically publish to GitHub Pages from the master branch.
+- Keep docs and blog-like posts in one structure.
 
-After deployment, your site will be available at:
+## Project structure
 
-`https://<your-github-username>.github.io/hello-world/`
+- docs/
+  - index.md
+  - articles/
+	 - welcome.md
+	 - writing-your-next-post.md
+- mkdocs.yml
+- requirements.txt
+- .github/workflows/deploy.yml
+
+## Local development
+
+1. Install dependencies:
+
+	pip install -r requirements.txt
+
+2. Start the local docs server:
+
+	mkdocs serve
+
+3. Open the local URL shown in the terminal (usually http://127.0.0.1:8000).
+
+## Add a new article
+
+1. Create a new Markdown file inside docs/articles/.
+2. Add it to nav in mkdocs.yml.
+3. Commit and push to master.
+
+The GitHub Actions workflow deploys the site automatically to GitHub Pages.
+
+## First-time GitHub Pages setup
+
+In your repository settings:
+
+1. Open Pages.
+2. Set Source to GitHub Actions.
+
+After that, each push to master publishes the latest docs site.
