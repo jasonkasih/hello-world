@@ -1,179 +1,316 @@
-/* ── Reset & Base ── */
-*, *::before, *::after {
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&display=swap");
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --bg: #f9f9f9;
-  --surface: #ffffff;
-  --border: #e5e7eb;
-  --text: #111827;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --radius: 12px;
-  --max-width: 640px;
-  --font: "Inter", system-ui, -apple-system, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d1117;
-    --surface: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --muted: #8b949e;
-    --accent: #58a6ff;
-  }
+  --bg: #f8f4ee;
+  --ink: #1f1f29;
+  --muted: #5e5a69;
+  --card: #fffdf9;
+  --border: #dfd5c6;
+  --accent: #b84d3d;
+  --accent-soft: #f4d5cd;
+  --max-width: 1100px;
+  --radius: 16px;
 }
 
 body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  padding: 2rem 1rem 4rem;
+  font-family: "Source Serif 4", Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, #f9e7d6 0%, transparent 40%),
+    radial-gradient(circle at 88% 30%, #d8ebea 0%, transparent 34%),
+    var(--bg);
+  line-height: 1.65;
+  min-height: 100vh;
+  padding: 1rem 1rem 3rem;
 }
 
-/* ── Layout ── */
+.bg-shape {
+  position: fixed;
+  z-index: -1;
+  filter: blur(70px);
+  opacity: 0.35;
+}
+
+.shape-one {
+  width: 340px;
+  height: 340px;
+  background: #f0b9a5;
+  top: -80px;
+  left: -80px;
+}
+
+.shape-two {
+  width: 320px;
+  height: 320px;
+  background: #b9d9d5;
+  right: -90px;
+  bottom: 4rem;
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 
-/* ── Hero ── */
-.hero {
+.site-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 2.5rem 1rem 1.5rem;
-  gap: 0.75rem;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 1.1rem 0 1rem;
 }
 
-.avatar img {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--border);
+.brand {
+  font-family: "Manrope", sans-serif;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  font-size: 1.1rem;
 }
 
-.hero h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.main-nav {
+  display: flex;
+  gap: 1rem;
 }
 
-.tagline {
+.main-nav a {
   color: var(--muted);
-  font-size: 1rem;
+  text-decoration: none;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-/* ── Card ── */
-.card {
-  background: var(--surface);
+.main-nav a:hover {
+  color: var(--accent);
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.intro,
+.featured,
+.posts,
+.panel {
+  background: color-mix(in srgb, var(--card) 90%, white 10%);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.4rem;
 }
 
-.card h2 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+.intro {
+  grid-column: 1 / 2;
+}
+
+.eyebrow {
+  font-family: "Manrope", sans-serif;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1rem;
-}
-
-.card p {
-  color: var(--text);
-  font-size: 0.95rem;
-}
-
-/* ── Experience ── */
-.experience-item {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.experience-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.experience-item:first-of-type {
-  padding-top: 0;
-}
-
-.experience-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.role {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.period {
-  font-size: 0.8rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.company {
-  font-size: 0.85rem;
+  letter-spacing: 0.09em;
+  font-size: 0.72rem;
   color: var(--accent);
+  margin-bottom: 0.7rem;
 }
 
-.description {
-  margin-top: 0.4rem;
-  font-size: 0.875rem;
+.intro h1 {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(1.65rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.intro p {
   color: var(--muted);
+  max-width: 60ch;
 }
 
-/* ── Links ── */
-.links {
-  list-style: none;
+h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.95rem;
+}
+
+.featured {
+  grid-column: 1 / 2;
+}
+
+.post-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.55rem;
 }
 
-.links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text);
-  text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.15s;
+.featured-card {
+  background:
+    linear-gradient(130deg, var(--accent-soft), transparent 60%),
+    #fff;
 }
 
-.links a:hover {
-  color: var(--accent);
-}
-
-.icon {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-  flex-shrink: 0;
-}
-
-/* ── Footer ── */
-footer {
-  text-align: center;
-  margin-top: 2.5rem;
-  font-size: 0.8rem;
+.meta {
+  font-family: "Manrope", sans-serif;
   color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.post-card h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.post-card p {
+  color: #423d4d;
+}
+
+.post-card a,
+.profile-link {
+  font-family: "Manrope", sans-serif;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 0.2rem;
+  width: fit-content;
+}
+
+.post-card a:hover,
+.profile-link:hover {
+  text-decoration: underline;
+}
+
+.posts {
+  grid-column: 1 / 2;
+}
+
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.topic-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.topic-list a {
+  display: inline-block;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.78rem;
+  background: #fff;
+}
+
+.topic-list a:hover {
+  border-color: var(--accent);
+}
+
+.panel p {
+  color: var(--muted);
+}
+
+.subscribe form {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.subscribe input,
+.subscribe button {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 0.62rem 0.75rem;
+  font-size: 0.92rem;
+  font-family: "Manrope", sans-serif;
+}
+
+.subscribe input {
+  background: #fff;
+}
+
+.subscribe button {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.subscribe button:hover {
+  filter: brightness(0.95);
+}
+
+.site-footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-family: "Manrope", sans-serif;
+  font-size: 0.82rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 880px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro,
+  .featured,
+  .posts {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .post-list {
+    grid-template-columns: 1fr;
+  }
 }
